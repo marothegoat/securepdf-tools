@@ -3,8 +3,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SecurePDF Tools — Private Browser-Based PDF Tools",
-  description:
-    "Merge, split, and protect PDFs entirely in your browser. No uploads. No accounts. Files never leave your device.",
+  description: "Merge, split, and protect PDFs in your browser. Files never leave your device.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -18,3 +20,17 @@ export default function RootLayout({
     </html>
   );
 }
+```
+
+4. Click **"Commit changes"** ✅
+
+---
+
+### Step 4 — Redeploy
+**Netlify → Deploys → "Trigger deploy"**
+
+---
+
+## Your favicon will show in the browser tab like this:
+```
+🔒 SecurePDF Tools — Private Browser...
