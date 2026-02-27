@@ -444,7 +444,7 @@ const DropZone = ({
 // ─────────────────────────────────────────────────────────────────────────────
 const MergeTool = () => {
   const [files, setFiles] = useState<PDFFile[]>([]);
-  const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "processing" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const dragOver = useRef<number | null>(null);
@@ -799,7 +799,7 @@ const ProtectTool = () => {
   const [fileName, setFileName] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "processing" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
