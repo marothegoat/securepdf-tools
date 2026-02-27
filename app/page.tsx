@@ -79,7 +79,7 @@ const uid = () => Math.random().toString(36).slice(2, 9);
 // ─────────────────────────────────────────────────────────────────────────────
 // BLOG CONTENT
 // ─────────────────────────────────────────────────────────────────────────────
-const BlogArticle = () => (
+
   // ============================================================
 // 20 SEO BLOG ARTICLES — READY TO PASTE INTO page.tsx
 // ============================================================
@@ -1099,74 +1099,6 @@ const BlogArticle19 = () => (
   </article>
 );
 
-const BlogArticle20 = () => (
-  <article className="prose-custom">
-    <p className="lead">
-      WebAssembly has quietly transformed what browsers can do with files. In
-      2026, your browser can process, encrypt, and manipulate PDFs at near
-      native speed — without sending a single byte to a server. Here is what
-      this means for privacy and why it matters.
-    </p>
-    <h2>What WebAssembly Actually Is</h2>
-    <p>
-      WebAssembly is a binary instruction format that runs in web browsers at
-      speeds approaching native desktop application performance. It was designed
-      to allow complex applications — video editors, design tools, scientific
-      simulations — to run entirely in the browser without plugins or
-      installation. For PDF processing, WebAssembly means that libraries
-      capable of full PDF manipulation can run locally in your browser tab.
-    </p>
-    <h2>How pdf-lib Uses the Browser</h2>
-    <p>
-      Libraries like pdf-lib are written in JavaScript and run entirely within
-      the browser's JavaScript engine. When you merge two PDFs in a
-      browser-based tool, the pdf-lib library reads both files into memory,
-      copies pages from each document into a new PDF structure, and outputs
-      the result as a downloadable binary — all within your browser tab. No
-      network request is made for the file data at any point in this process.
-    </p>
-    <h2>Verifying That No Upload Occurs</h2>
-    <p>
-      You can verify this yourself using browser developer tools. Open DevTools
-      with F12, navigate to the Network tab, and then use any browser-based PDF
-      tool. If the tool is genuinely local, you will see zero outbound POST
-      requests containing your file data. This is the definitive verification
-      method and any genuinely private tool should pass this test.
-    </p>
-    <h2>The Privacy Implications</h2>
-    <p>
-      Browser-native processing represents a fundamental privacy model shift.
-      Traditional software required installation. Cloud tools required upload.
-      Browser-native tools require neither — they run in the browser you
-      already have, process data that never leaves your device, and produce
-      output you download directly. For sensitive document processing, this
-      is the most privacy-preserving model available to ordinary users today.
-    </p>
-    <h2>Limitations of Browser-Based PDF Processing</h2>
-    <ul>
-      <li><strong>OCR is limited</strong> — optical character recognition still benefits from server-side processing for accuracy.</li>
-      <li><strong>Very large files</strong> — files above 200MB may be slow depending on device RAM.</li>
-      <li><strong>PDF to Word conversion</strong> — structural reconstruction still works better server-side.</li>
-      <li><strong>Advanced editing</strong> — text reflow and layout editing are not currently feasible browser-side.</li>
-    </ul>
-    <div className="faq-section">
-      <h2>Frequently Asked Questions</h2>
-      <div className="faq-item">
-        <h3>Is browser-based PDF processing as fast as desktop software?</h3>
-        <p>For merging, splitting, and encryption, browser-based tools are fast enough that most users notice no difference from desktop software. Very large files take longer due to JavaScript overhead compared to compiled native code.</p>
-      </div>
-      <div className="faq-item">
-        <h3>Will browser-based tools eventually replace desktop PDF software?</h3>
-        <p>For the majority of common tasks — merging, splitting, encrypting, viewing, annotating — browser tools already match or exceed desktop alternatives. Complex editing and OCR workflows will likely remain server or desktop-dependent for several more years.</p>
-      </div>
-      <div className="faq-item">
-        <h3>Does using a browser-based tool mean my data is stored in the browser?</h3>
-        <p>No. Files are loaded into temporary browser memory (RAM) for processing. They are not written to disk, not stored in localStorage, and not cached. Closing the tab or refreshing the page clears all file data completely.</p>
-      </div>
-    </div>
-  </article>
-);
-
 // ============================================================
 // REPLACE YOUR ENTIRE posts ARRAY WITH THIS
 // ============================================================
@@ -1531,9 +1463,6 @@ const posts: BlogPost[] = [
       </div>
     </div>
   </article>
-);
-
-const posts: BlogPost[] = [
   {
     slug: "stop-uploading-sensitive-pdfs",
     title:
