@@ -30,8 +30,6 @@ import {
   ArrowLeft,
   ChevronRight,
   BookOpen,
-  Star,
-  Zap,
   Eye,
   EyeOff,
   X,
@@ -560,12 +558,10 @@ const MergeTool = () => {
             ))}
           </div>
 
-          <button
-            onClick={() => inputRef.current?.click()}
-            className="w-full py-2.5 rounded-xl border border-dashed border-slate-600 hover:border-indigo-500 text-slate-500 hover:text-indigo-400 text-sm font-mono transition-all flex items-center justify-center gap-2 hover:bg-indigo-500/5"
-          >
+          <label className="w-full py-2.5 rounded-xl border border-dashed border-slate-600 hover:border-indigo-500 text-slate-500 hover:text-indigo-400 text-sm font-mono transition-all flex items-center justify-center gap-2 hover:bg-indigo-500/5 cursor-pointer">
+            <input type="file" accept=".pdf" multiple className="hidden" onChange={(e) => { const f = Array.from(e.target.files || []); if(f.length) addFiles(f); e.target.value=""; }} />
             <Plus className="w-4 h-4" /> Add more files
-          </button>
+          </label>
         </div>
       )}
 
@@ -625,8 +621,6 @@ const MergeTool = () => {
   );
 };
 
-// hidden ref trick for add-more in merge tool — attach a ref manually
-const inputRef = React.createRef<HTMLInputElement>();
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SPLIT TOOL
@@ -819,7 +813,7 @@ const ProtectTool = () => {
       const buf = await file.arrayBuffer();
       const doc = await PDFDocument.load(buf);
       // pdf-lib encryption via save options
-      const bytes = await doc.save({
+      const bytes = await (doc.save as any)({
         userPassword: password,
         ownerPassword: password + "_owner",
         permissions: {
