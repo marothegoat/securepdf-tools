@@ -781,7 +781,7 @@ const SplitTool = () => {
       {(status === "ready" || status === "error") && (
         <button
           onClick={split}
-          disabled={status === "processing"}
+          disabled={status === "processing" || status === "ready" && false}
           className="w-full py-4 rounded-2xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono font-semibold text-sm tracking-wider transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:-translate-y-0.5"
         >
           SPLIT PDF →
