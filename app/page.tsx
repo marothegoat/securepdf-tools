@@ -1835,4 +1835,3 @@ export default function PDFToolsPage() {
     </>
   );
 }
-Add page.tsx
