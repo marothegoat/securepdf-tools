@@ -322,7 +322,7 @@ const SchemaMarkup = () => {
         name: "Are my files uploaded to a server?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. All PDF processing happens entirely in your browser. Your files never leave your device.",
+          text: "No. All PDF processing happens entirely in your browser using the pdf-lib library. Your files never leave your device.",
         },
       },
       {
@@ -330,15 +330,31 @@ const SchemaMarkup = () => {
         name: "What is a private PDF merger?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "A private PDF merger combines multiple PDF files into one entirely in your browser, with zero server upload, ensuring complete privacy.",
+          text: "A private PDF merger combines multiple PDF files into one entirely in your browser, with zero server upload, ensuring complete privacy for sensitive documents.",
         },
       },
       {
         "@type": "Question",
-        name: "Can I use this PDF tool offline?",
+        name: "Can I use these PDF tools offline?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. After the initial page load, all PDF tools work fully offline.",
+          text: "Yes. After the initial page load, all PDF tools work fully offline. You can disconnect from Wi-Fi and process documents with complete confidence.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is the Protect PDF tool HIPAA safe?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Browser-based processing eliminates the server transmission risk. The tool uses AES-256 encryption locally. Consult your compliance officer for specific HIPAA use case requirements.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does the PDF password protection work?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Protect PDF tool uses AES-256 encryption via the pdf-lib library. The encryption happens in your browser using your chosen password, and the password is never transmitted anywhere.",
         },
       },
     ],
