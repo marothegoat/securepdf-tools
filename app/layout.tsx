@@ -22,15 +22,13 @@ export default function RootLayout({
 }
 ```
 
-4. Click **"Commit changes"** ✅
+6. Click **"Commit changes"** ✅
+7. **Netlify → Trigger deploy**
 
 ---
 
-### Step 4 — Redeploy
-**Netlify → Deploys → "Trigger deploy"**
+## What Happened
 
----
-
-## Your favicon will show in the browser tab like this:
+When I showed you the example:
 ```
 🔒 SecurePDF Tools — Private Browser...
