@@ -444,7 +444,7 @@ const DropZone = ({
 // ─────────────────────────────────────────────────────────────────────────────
 const MergeTool = () => {
   const [files, setFiles] = useState<PDFFile[]>([]);
-  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "processing" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const dragOver = useRef<number | null>(null);
@@ -498,7 +498,7 @@ const MergeTool = () => {
         pages.forEach((p) => merged.addPage(p));
       }
       const bytes = await merged.save();
-      const blob = new Blob([bytes.slice()], { type: "application/pdf" });
+      const blob = new Blob([bytes.buffer as ArrayBuffer], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
       setStatus("done");
@@ -690,7 +690,7 @@ const SplitTool = () => {
         const copied = await newDoc.copyPages(src, indices);
         copied.forEach((p) => newDoc.addPage(p));
         const bytes = await newDoc.save();
-        const blob = new Blob([bytes.slice()], { type: "application/pdf" });
+        const blob = new Blob([bytes.buffer as ArrayBuffer], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         const rangeStr = pageGroups[i][0] + 1 === pageGroups[i][pageGroups[i].length - 1] + 1
           ? `page-${pageGroups[i][0] + 1}`
@@ -781,7 +781,7 @@ const SplitTool = () => {
       {(status === "ready" || status === "error") && (
         <button
           onClick={split}
-          disabled={status === "processing"}
+          disabled={false}
           className="w-full py-4 rounded-2xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono font-semibold text-sm tracking-wider transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:-translate-y-0.5"
         >
           SPLIT PDF →
@@ -799,7 +799,7 @@ const ProtectTool = () => {
   const [fileName, setFileName] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "processing" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
@@ -832,7 +832,7 @@ const ProtectTool = () => {
           documentAssembly: false,
         },
       });
-      const blob = new Blob([bytes.slice()], { type: "application/pdf" });
+      const blob = new Blob([bytes.buffer as ArrayBuffer], { type: "application/pdf" });
       setDownloadUrl(URL.createObjectURL(blob));
       setStatus("done");
     } catch (e: any) {
