@@ -498,7 +498,7 @@ const MergeTool = () => {
         pages.forEach((p) => merged.addPage(p));
       }
       const bytes = await merged.save();
-      const blob = new Blob([bytes], { type: "application/pdf" });
+      const blob = new Blob([new Uint8Array(bytes)], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       setDownloadUrl(url);
       setStatus("done");
@@ -690,7 +690,7 @@ const SplitTool = () => {
         const copied = await newDoc.copyPages(src, indices);
         copied.forEach((p) => newDoc.addPage(p));
         const bytes = await newDoc.save();
-        const blob = new Blob([bytes], { type: "application/pdf" });
+        const blob = new Blob([new Uint8Array(bytes)], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         const rangeStr = pageGroups[i][0] + 1 === pageGroups[i][pageGroups[i].length - 1] + 1
           ? `page-${pageGroups[i][0] + 1}`
@@ -832,7 +832,7 @@ const ProtectTool = () => {
           documentAssembly: false,
         },
       });
-      const blob = new Blob([bytes], { type: "application/pdf" });
+      const blob = new Blob([new Uint8Array(bytes)], { type: "application/pdf" });
       setDownloadUrl(URL.createObjectURL(blob));
       setStatus("done");
     } catch (e: any) {
